@@ -1,6 +1,8 @@
 
 # Docker in Motion from Manning Publications
 
+Test
+
 Welcome to the Github repository for [Docker in Motion](http://bit.ly/2vvz2sA)
 
 Docker in Motion teaches you how to create and manage container-hosted applications in Docker. 

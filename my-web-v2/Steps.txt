@@ -1,3 +1,5 @@
+#### Option 1: Build and run apache and mysql using Dockerfile
+
 ### Docker Network
 # docker network for linking mysql and apache containers
 docker network create -d bridge my-web-net
@@ -33,3 +35,24 @@ docker run --rm --name my-web -d -p 80:80 -v apache2_logs:/var/log/apache2 my-we
 
 # Add container apache2 to the network
 docker network connect my-web-net my-web
+
+
+#### Option 2: Build and run apache and mysql using docker-compose
+
+### docker-compose
+# start using docker-compose up
+docker-compose up -d
+
+# Add seed data
+cat mysql/schemas/rebuild.sql | docker exec -i my-web-v2_mysql_1 \
+       mysql -u root --password=test docker_in_motion
+
+# stop and remove using docker-compose down
+docker-compose down
+
+# Build images again after changes and redeploy
+docker-compose build
+docker-compose up -d
+
+
+
